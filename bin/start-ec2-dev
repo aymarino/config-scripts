@@ -1,8 +1,4 @@
 #!/bin/bash
-# Pre-requesites:
-#  aws cli (brew)
-#  jq (brew)
-#  ssh-config (pip)
 
 remote=false
 directory=/home/ubuntu
