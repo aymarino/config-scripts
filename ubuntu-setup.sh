@@ -21,7 +21,11 @@ if ! exists aws ; then
   sudo ./aws/install
   ensure_exists aws
   rm awscliv2.zip
+  # rm -rf aws -- confirm
 fi
 
-# Elastic beanstalk CLI
+if ! exists eb ; then
+  pip install awsebcli
+fi
+
 # Jekyll
