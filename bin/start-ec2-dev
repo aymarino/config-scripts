@@ -1,0 +1,51 @@
+#!/bin/bash
+# Pre-requesites:
+#  aws cli (brew)
+#  jq (brew)
+#  ssh-config (pip)
+
+remote=false
+directory=/home/ubuntu
+while getopts d:r flag; do
+    case "${flag}" in
+        d) directory="$directory/${OPTARG}";;
+        r) remote=true;;
+    esac
+done
+
+instance_id="i-0014bb32deb30fbcf"
+
+function get_instance_desc() {
+  aws ec2 describe-instances --profile personal \
+  | jq --arg id $instance_id \
+  '.Reservations[].Instances[] | select(.InstanceId == $id)'
+}
+
+function get_instance_state() {
+  get_instance_desc | jq -r '.State.Name'
+}
+
+instance_state=$(get_instance_state)
+echo "Initial state of $instance_id: $instance_state"
+
+if [[ "$instance_state" == "stopped" ]]; then
+  echo "Starting instance ..."
+  aws ec2 start-instances --profile personal --instance-id $instance_id > /dev/null
+fi
+
+instance_state=$(get_instance_state)
+while [[ "$instance_state" != "running" ]]; do
+  echo "Waiting for instance to be running, currently $instance_state ..."
+  sleep 2s
+  instance_state=$(get_instance_state)
+done
+
+public_dns=$(get_instance_desc | jq -r '.PublicDnsName')
+echo "Found public HostName $public_dns"
+
+yes | ssh-config update dev-personal HostName=$public_dns
+
+if [[ "$remote" == "true" ]]; then
+  echo "Launching VS Code remote SSH to $directory ..."
+  code --remote ssh-remote+dev-personal $directory
+fi
