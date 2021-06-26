@@ -1,4 +1,5 @@
 
+# TODO: use 'brew list' instead of grepping through Applications?
 function exists() {
   command -v "$1" &> /dev/null || \
   ls /Applications/ | grep -i "$1.app" &> /dev/null
