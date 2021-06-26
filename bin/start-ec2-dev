@@ -2,14 +2,14 @@
 
 remote=false
 directory=/home/ubuntu
-while getopts d:r flag; do
+instance_id="i-0014bb32deb30fbcf"
+while getopts d:i:r flag; do
     case "${flag}" in
         d) directory="$directory/${OPTARG}";;
         r) remote=true;;
+        i) instance_id="${OPTARG}";;
     esac
 done
-
-instance_id="i-0014bb32deb30fbcf"
 
 function get_instance_desc() {
   aws ec2 describe-instances --profile personal \
