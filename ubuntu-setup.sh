@@ -49,6 +49,7 @@ apt_install build-essential
 # Python environment. Both pipenv and pyenv have a weird, '.bashrc'-hacky installation.
 apt_install python3
 apt_install python3-pip
+apt_install libssl-dev # Required by pyenv
 
 if ! exists pipenv ; then
   pip install pipenv
@@ -84,13 +85,15 @@ if ! exists aws ; then
 fi
 
 # Elastic Beanstalk CLI
-# if ! exists eb ; then
-#   pip install awsebcli
-# fi
+if ! exists eb ; then
+  pip install awsebcli
+  ensure_exists eb
+fi
 
 # Jekyll
-# apt_install ruby-full
-# apt_install zlib1g-dev
-# if ! exists jekyll ; then
-#   sudo gem install jekyll bundler
-# fi
+apt_install ruby-full
+apt_install zlib1g-dev
+if ! exists jekyll ; then
+  sudo gem install jekyll bundler
+  ensure_exists jekyll
+fi
