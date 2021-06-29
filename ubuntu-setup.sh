@@ -70,6 +70,8 @@ fi
 # Utilities
 apt_install ripgrep
 apt_install unzip
+apt_install fzf
+append_to_bashrc_and_source "source /usr/share/doc/fzf/examples/key-bindings.bash"
 
 # AWS CLI 2
 if ! exists aws ; then
