@@ -1,8 +1,7 @@
 
-# TODO: use 'brew list' instead of grepping through Applications?
 function exists() {
-  command -v "$1" &> /dev/null || \
-  ls /Applications/ | grep -i "$1.app" &> /dev/null
+  echo "Checking if command '$1' exists..."
+  command -v "$1" &> /dev/null
 }
 
 function ensure_exists() {
@@ -12,8 +11,14 @@ function ensure_exists() {
   fi
 }
 
+function brew_installed() {
+  echo "Checking if package '$1' is installed by brew..."
+  brew list | grep -wF "$1" &> /dev/null
+}
+
 function brew_install() {
-  if ! exists $1 ; then
+  if ! brew_installed $1 ; then
+    echo "Installing '$1' with brew..."
     brew install $1
   fi
 }
@@ -28,16 +33,23 @@ if ! exists brew ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# Utilities
 brew_install mos # reverse scroll wheel direction
 brew_install rectangle # gives Windows-style max/half screen shortcuts
 brew_install jq
+if ! exists fzf ; then
+  brew_install fzf
+  $(brew --prefix)/opt/fzf/install # Installs key bindings and `**` command completion
+fi
 
 if ! exists aws ; then
   brew install awscli # AWS CLI version 2
 fi
 
 # Install python & pip
-brew_install python3
+if ! exists python3 ; then
+  brew_install python3
+fi
 ensure_exists pip3
 
 # 'ssh-config' used by start-ec2-dev script
