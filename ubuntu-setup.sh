@@ -1,3 +1,10 @@
+#!/bin/bash
+
+# Ensure we're in the same dir as the script, since some relative paths are used.
+cd $(dirname "$0")
+
+RC_FILES="$HOME/.bashrc"
+source rc-setup.sh
 
 function exists() {
   echo "Checking if command '$1' exists..."
@@ -24,22 +31,6 @@ function apt_install() {
   fi
 }
 
-function exists_in_file() {
-  echo "Checking if '$1' exists in $2 ..."
-  # -q - quiet
-  # -x - match whole line
-  # -F - pattern is plain string
-  grep -qxF "$1" $2
-}
-
-function append_to_bashrc_and_source() {
-  if ! exists_in_file "$1" ~/.bashrc ; then
-    echo "Appending '$1' onto ~/.bashrc ..."
-    echo $1 >> ~/.bashrc
-    source ~/.bashrc
-  fi
-}
-
 ensure_exists git
 sh ./git-setup.sh
 
@@ -54,16 +45,14 @@ apt_install libssl-dev # Required by pyenv
 if ! exists pipenv ; then
   pip install pipenv
   # 'pipenv' is install in user ~/.local/bin, which may not be sourced in .bashrc
-  append_to_bashrc_and_source "export PATH=\"\$HOME/.local/bin:\$PATH\""
+  add_to_rc pipenv.sh
   ensure_exists pipenv
 fi
 
 if ! exists pyenv ; then
   rm -rf ~/.pyenv
   curl https://pyenv.run | bash
-  append_to_bashrc_and_source "export PYENV_ROOT=\"\$HOME/.pyenv\""
-  append_to_bashrc_and_source "export PATH=\"\$PYENV_ROOT/bin:\$PATH\""
-  append_to_bashrc_and_source "eval \"\$(pyenv init --path)\""
+  add_to_rc pyenv.sh
   ensure_exists pyenv
 fi
 
@@ -71,7 +60,7 @@ fi
 apt_install ripgrep
 apt_install unzip
 apt_install fzf
-append_to_bashrc_and_source "source /usr/share/doc/fzf/examples/key-bindings.bash"
+add_to_rc fzf.sh
 
 # AWS CLI 2
 if ! exists aws ; then

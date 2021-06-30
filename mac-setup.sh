@@ -1,3 +1,10 @@
+#!/bin/bash
+
+# Ensure we're in the same dir as the script, since some relative paths are used.
+cd $(dirname "$0")
+
+RC_FILES="$HOME/.bashrc $HOME/.zshrc" # Set .rc files for both ZSH and Bash shell
+source rc-setup.sh
 
 function exists() {
   echo "Checking if command '$1' exists..."
@@ -57,5 +64,7 @@ if ! exists ssh-config ; then
   pip3 install ssh-config
 fi
 
-# TODO:
-# * Put ./bin in .zshrc & .bashrc idempotently
+# Add scripts to bin
+add_script_to_bin start-ec2-dev
+# Add ~/.scripts-bin to PATH
+add_to_rc scripts-bin.sh

@@ -4,11 +4,11 @@ remote=false
 directory=/home/ubuntu
 instance_id="i-0014bb32deb30fbcf"
 while getopts d:i:r flag; do
-    case "${flag}" in
-        d) directory="$directory/${OPTARG}";;
-        r) remote=true;;
-        i) instance_id="${OPTARG}";;
-    esac
+  case "${flag}" in
+    d) directory="$directory/${OPTARG}";;
+    r) remote=true;;
+    i) instance_id="${OPTARG}";;
+  esac
 done
 
 function get_instance_desc() {
