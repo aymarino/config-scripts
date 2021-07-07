@@ -3,7 +3,7 @@
 # Ensure we're in the same dir as the script, since some relative paths are used.
 cd $(dirname "$0")
 
-RC_FILES="$HOME/.bashrc"
+RC_FILES="$HOME/.bashrc $HOME/.profile"
 source rc-setup.sh
 
 function exists() {
@@ -62,6 +62,14 @@ apt_install unzip
 apt_install fzf
 add_to_rc fzf.sh
 
+# Rust
+if ! exists rustup ; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  source_rcs
+  ensure_exists rustup
+  ensure_exists rustc
+fi
+
 # AWS CLI 2
 if ! exists aws ; then
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -88,3 +96,22 @@ if ! exists jekyll ; then
   sudo gem install jekyll bundler
   ensure_exists jekyll
 fi
+
+# NVM/Node
+if ! exists nvm ; then
+  curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+  add_to_rc nvm.sh
+  ensure_exists nvm
+fi
+
+if ! exists node ; then
+  nvm install node
+  source_rcs
+  ensure_exists node
+  ensure_exists npm
+fi
+
+# Tauri
+apt_install libwebkit2gtk-4.0-dev
+apt_install libgtk-3-dev
+apt_install squashfs-tools

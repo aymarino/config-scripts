@@ -11,10 +11,17 @@ function source_rc_dir() {
     cat $rc_source_file >> $1
   fi
 
-  if [[ $1 =~ ".bashrc" ]]; then
+  if [[ ! $1 =~ "zsh" ]]; then
     echo "Sourcing '$1'..."
     source $1
   fi
+}
+
+function source_rcs() {
+  for rc in $RC_FILES; do
+    echo "Checking if we need to source '$RC_DIR' in '$rc'..."
+    source_rc_dir $rc
+  done
 }
 
 function add_to_rc() {
@@ -23,10 +30,7 @@ function add_to_rc() {
   mkdir -p $RC_DIR # '-p': ignore if already exists
   cp ./rc-scripts/$1 $RC_DIR
 
-  for rc in $RC_FILES; do
-    echo "Checking if we need to source '$RC_DIR' in '$rc'..."
-    source_rc_dir $rc
-  done
+  source_rcs
 }
 
 function add_script_to_bin() {
