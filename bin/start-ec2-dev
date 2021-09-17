@@ -41,7 +41,13 @@ echo "Found public HostName $public_dns"
 
 yes | ssh-config update dev-personal HostName=$public_dns
 
+if command -v code &> /dev/null ; then
+  code_cmd=code
+else
+  code_cmd=code-insiders
+fi
+
 if [[ "$remote" == "true" ]]; then
   echo "Launching VS Code remote SSH to $directory ..."
-  code --remote ssh-remote+dev-personal $directory
+  $code_cmd --remote ssh-remote+dev-personal $directory
 fi

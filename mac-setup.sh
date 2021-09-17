@@ -70,9 +70,3 @@ add_script_to_bin start-ec2-dev
 
 # Add ~/.scripts-bin to PATH
 add_to_rc scripts-bin.sh
-
-# If 'code-insiders' is installed but not 'code', alias one to the other
-# TODO: install code/code-insiders?
-if ! exists code && exists code-insiders ; then
-  add_to_rc code-insiders-alias.sh
-fi
