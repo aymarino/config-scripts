@@ -56,6 +56,9 @@ if ! exists pyenv ; then
   ensure_exists pyenv
 fi
 
+# C++
+apt_install gdb
+
 # Utilities
 apt_install ripgrep
 apt_install unzip
