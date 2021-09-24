@@ -67,5 +67,6 @@ fi
 
 # Add scripts to bin
 add_script_to_bin start-ec2-dev
+
 # Add ~/.scripts-bin to PATH
 add_to_rc scripts-bin.sh

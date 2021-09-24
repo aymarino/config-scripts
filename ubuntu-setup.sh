@@ -56,6 +56,9 @@ if ! exists pyenv ; then
   ensure_exists pyenv
 fi
 
+# C++
+apt_install gdb
+
 # Utilities
 apt_install ripgrep
 apt_install unzip
@@ -72,7 +75,12 @@ fi
 
 # AWS CLI 2
 if ! exists aws ; then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  arch=$(dpkg --print-architecture)
+  if [ "$arch" = "arm64" ]; then
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+  else
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  fi
   unzip awscliv2.zip
   sudo ./aws/install
 
