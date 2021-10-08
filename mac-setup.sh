@@ -44,6 +44,7 @@ fi
 brew_install mos # reverse scroll wheel direction
 # brew_install rectangle # gives Windows-style max/half screen shortcuts
 brew_install amethyst # Gives i3wm-style window management
+brew_install maccy # Gives clipboard history
 brew_install jq
 if ! exists fzf ; then
   brew_install fzf
