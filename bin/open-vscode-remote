@@ -1,8 +1,8 @@
 #!/bin/bash
 
-workspace_root="/workplace/aymarino"
+workspace_root="/workplace/$USER"
 PS3="Select a Brazil workspace: "
-select dir in $(ssh -t dev "ls $workspace_root" 2> /dev/null); do
+select dir in $(ssh -t dev "ls $workspace_root | tr '\n' ' '" 2> /dev/null); do
     full_path="$workspace_root/$dir"
     echo "Opening $full_path in VSCode remote..."
     code --remote ssh-remote+dev $full_path
