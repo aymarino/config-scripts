@@ -20,7 +20,7 @@ function ensure_exists() {
 
 function brew_installed() {
   echo "Checking if package '$1' is installed by brew..."
-  brew list | grep -wF "$1" &> /dev/null
+  brew list | grep --word-regexp --fixed-strings "$1" &> /dev/null
 }
 
 function brew_install() {
@@ -42,8 +42,7 @@ fi
 
 # Utilities
 brew_install mos # reverse scroll wheel direction
-# brew_install rectangle # gives Windows-style max/half screen shortcuts
-brew_install amethyst # Gives i3wm-style window management
+brew_install rectangle # gives Windows-style max/half screen shortcuts
 brew_install maccy # Gives clipboard history
 brew_install jq
 if ! exists fzf ; then
