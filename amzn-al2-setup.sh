@@ -24,6 +24,8 @@ sh ./git-setup.sh
 
 # Add scripts to bin
 add_script_to_bin git-repo-setup
+add_script_to_bin auth
+add_script_to_bin set-ra-path
 
 # Add ~/.scripts-bin to PATH
 add_to_rc scripts-bin.sh
