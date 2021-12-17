@@ -3,20 +3,10 @@
 # Ensure we're in the same dir as the script, since some relative paths are used.
 cd $(dirname "$0")
 
+source common.sh
+
 RC_FILES="$HOME/.bashrc $HOME/.zshrc" # Set .rc files for both ZSH and Bash shell
 source rc-setup.sh
-
-function exists() {
-  echo "Checking if command '$1' exists..."
-  command -v "$1" &> /dev/null
-}
-
-function ensure_exists() {
-  if ! exists $1 ; then
-    echo "'$1' not found, but was expected to be; exiting"
-    exit 1
-  fi
-}
 
 function brew_installed() {
   echo "Checking if package '$1' is installed by brew..."
