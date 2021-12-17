@@ -1,0 +1,36 @@
+{
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["g", "s"],
+            "commands": ["workbench.action.showAllSymbols"]
+        },
+        {
+            "before": ["g", "e"],
+            "commands": ["editor.action.marker.nextInFiles"]
+        },
+        {
+            "before": ["g", "R"],
+            "commands": ["editor.action.rename"]
+        },
+        {
+            "before": ["g", "t"],
+            "commands": ["editor.action.goToDefinition"]
+        },
+        {
+            "before": ["g", "i"],
+            "commands": ["editor.action.goToImplementation"]
+        },
+        {
+            "before": ["g", "r"],
+            "commands": ["editor.action.goToReferences"]
+        },
+        {
+            "before": ["g", "b"],
+            "commands": ["workbench.action.navigateBack"]
+        },
+        {
+            "before": ["g", "f"],
+            "commands": ["workbench.action.navigateForward"]
+        }
+    ]
+}

@@ -2,12 +2,25 @@
 
 remote=false
 directory=/home/ubuntu
-instance_id="i-0014bb32deb30fbcf"
-while getopts d:i:r flag; do
+instance_id="i-059afdf47875618a6"
+
+function usage() {
+  echo "\
+Usage: $0 \
+[ -d directory = $directory ] \
+[ -i instance_id = $instance_id ]\
+[ -r open in VSCode remote = $remote ] \
+" 1>&2
+  exit 1
+}
+
+while getopts "d:i:rh" flag; do
   case "${flag}" in
     d) directory="$directory/${OPTARG}";;
     r) remote=true;;
     i) instance_id="${OPTARG}";;
+    h) usage;;
+    *) usage;;
   esac
 done
 
