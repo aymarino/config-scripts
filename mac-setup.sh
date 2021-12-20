@@ -17,6 +17,13 @@ function brew_install() {
   if ! brew_installed $1 ; then
     echo "Installing '$1' with brew..."
     brew install $1
+}
+
+function brew_install_login_app() {
+  if ! brew_installed $1 ; then
+    brew install --cask $1
+    echo "Open $1 and enable 'Start at login' in preferences ..."
+    read -p "Press enter to continue"
   fi
 }
 
@@ -31,12 +38,11 @@ if ! exists brew ; then
 fi
 
 # Utilities
-brew_install mos # reverse scroll wheel direction
-brew_install rectangle # gives Windows-style max/half screen shortcuts
-brew_install maccy # Gives clipboard history
+brew_install_login_app mos # reverse scroll wheel direction
+brew_install_login_app rectangle # gives Windows-style max/half screen shortcuts
+brew_install_login_app maccy # Gives clipboard history
 brew_install jq
-if ! exists fzf ; then
-  brew_install fzf
+if brew_install fzf ; then
   $(brew --prefix)/opt/fzf/install # Installs key bindings and `**` command completion
 fi
 
