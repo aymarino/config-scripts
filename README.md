@@ -4,6 +4,7 @@ This is a collection of scripts, mostly related to setting up a new machine with
 
 ## TODO
 
-* Install vscode extensions and configure
+* Mac:
+  * VSCode, extensions, and configurations
 * Python packages:
   * `pyyaml`

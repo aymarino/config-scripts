@@ -32,5 +32,11 @@
             "before": ["g", "f"],
             "commands": ["workbench.action.navigateForward"]
         }
-    ]
+    ],
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "workbench.editor.revealIfOpen": true,
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    }
 }
