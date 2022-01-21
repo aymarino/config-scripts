@@ -61,6 +61,10 @@ if ! exists ssh-config ; then
   pip3 install ssh-config
 fi
 
+# Set AppSwitcher to show up on all displays
+defaults write com.apple.Dock appswitcher-all-displays -bool true
+killall Dock
+
 # Add scripts to bin
 add_script_to_bin start-ec2-dev
 add_script_to_bin open-vscode-remote
