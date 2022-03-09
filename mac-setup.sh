@@ -17,6 +17,9 @@ function brew_install() {
   if ! brew_installed $1 ; then
     echo "Installing '$1' with brew..."
     brew install $1
+    return 0
+  else
+    return 1
   fi
 }
 
