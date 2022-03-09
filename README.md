@@ -6,5 +6,7 @@ This is a collection of scripts, mostly related to setting up a new machine with
 
 * Mac:
   * VSCode, extensions, and configurations
+* AMZN AL2:
+  * Install `fzf`
 * Python packages:
   * `pyyaml`

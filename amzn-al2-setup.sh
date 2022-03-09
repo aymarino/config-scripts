@@ -15,7 +15,6 @@ function yum_install() {
 }
 
 # Install utilities
-# TODO: install fzf
 yum_install jq
 
 # Setup git config
