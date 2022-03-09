@@ -17,6 +17,7 @@ function brew_install() {
   if ! brew_installed $1 ; then
     echo "Installing '$1' with brew..."
     brew install $1
+  fi
 }
 
 function brew_install_login_app() {
@@ -67,6 +68,7 @@ killall Dock
 
 # Add scripts to bin
 add_script_to_bin start-ec2-dev
+add_script_to_bin_as auth-mac auth
 add_script_to_bin open-vscode-remote
 
 # Add ~/.scripts-bin to PATH
