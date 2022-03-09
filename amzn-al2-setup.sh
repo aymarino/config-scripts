@@ -3,10 +3,10 @@
 # Ensure we're in the same dir as the script, since some relative paths are used.
 cd $(dirname "$0")
 
-source common.sh
+source util/common.sh
 
 RC_FILES="$HOME/.bashrc $HOME/.zshrc" # Set .rc files for both ZSH and Bash shell
-source rc-setup.sh
+source util/rc-setup.sh
 
 function yum_install() {
   if ! exists $1 ; then
@@ -20,7 +20,7 @@ yum_install jq
 
 # Setup git config
 ensure_exists git
-sh ./git-setup.sh
+sh ./util/git-setup.sh
 
 # Add scripts to bin
 add_script_to_bin git-repo-setup

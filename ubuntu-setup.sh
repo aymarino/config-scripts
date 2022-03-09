@@ -3,10 +3,10 @@
 # Ensure we're in the same dir as the script, since some relative paths are used.
 cd $(dirname "$0")
 
-source common.sh
+source util/common.sh
 
 RC_FILES="$HOME/.bashrc $HOME/.profile"
-source rc-setup.sh
+source util/rc-setup.sh
 
 function apt_installed() {
   echo "Checking if package '$1' is installed..."
@@ -22,7 +22,7 @@ function apt_install() {
 }
 
 ensure_exists git
-sh ./git-setup.sh
+sh ./util/git-setup.sh
 
 # Essentials
 apt_install build-essential
