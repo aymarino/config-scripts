@@ -66,8 +66,10 @@ if ! exists ssh-config ; then
 fi
 
 # Set AppSwitcher to show up on all displays
-defaults write com.apple.Dock appswitcher-all-displays -bool true
-killall Dock
+if [[ $(defaults read com.apple.Dock appswitcher-all-displays) == "0" ]]; then
+  defaults write com.apple.Dock appswitcher-all-displays -bool true
+  killall Dock
+fi
 
 # Add scripts to bin
 add_script_to_bin start-ec2-dev
