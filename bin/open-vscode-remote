@@ -2,21 +2,19 @@
 
 dev_desktop_hostname="dev"
 workspace_root="/workplace/$USER"
-workspaces=$(ssh -t $dev_desktop_hostname "ls $workspace_root | tr '\n' ' '" 2> /dev/null)
+workspaces=$(ssh -t $dev_desktop_hostname "ls $workspace_root | tr '\n' ' '" \
+    2> /dev/null \
+    | tr ' ' '\n' \
+)
 if [[ $? -ne 0 ]]; then
     echo "Error retrieving DevDesktop version sets; try running mwinit"
     exit 1
 fi
 
-if [ ! -z "$1" ]; then
-    echo "Scoping to matches with '$1'..."
-    workspaces=$(echo $workspaces | tr ' ' '\n' | grep -i $1 | tr '\n' ' ')
-fi
+dir=$(fzf --ansi <<< "$workspaces")
 
-PS3="Select a Brazil workspace: "
-select dir in $workspaces; do
+if [[ ! -z "$dir" ]]; then
     full_path="$workspace_root/$dir"
     echo "Opening $full_path in VSCode remote..."
     code --remote ssh-remote+$dev_desktop_hostname $full_path
-    break
-done
+fi
