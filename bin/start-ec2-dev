@@ -2,7 +2,7 @@
 
 remote=false
 directory=/home/ubuntu
-instance_id="i-059afdf47875618a6"
+instance_id=""
 
 function usage() {
   echo "\

@@ -74,7 +74,7 @@ fi
 # Add scripts to bin
 add_script_to_bin start-ec2-dev
 add_script_to_bin_as auth-mac auth
-add_script_to_bin open-vscode-remote
+add_script_to_bin remote-workspace
 
 # Add ~/.scripts-bin to PATH
 add_to_rc scripts-bin.sh
