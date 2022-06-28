@@ -31,6 +31,10 @@
         {
             "before": ["g", "f"],
             "commands": ["workbench.action.navigateForward"]
+        },
+        {
+            "before": ["T", "T"],
+            "commands": ["workbench.action.closeOtherEditors"]
         }
     ],
     "editor.bracketPairColorization.enabled": true,
