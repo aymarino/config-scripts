@@ -17,6 +17,11 @@ function yum_install() {
 # Install utilities
 yum_install jq
 
+if ! exists fzf ; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+fi
+
 # Setup git config
 ensure_exists git
 sh ./util/git-setup.sh
