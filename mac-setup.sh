@@ -65,7 +65,9 @@ if ! exists python3 ; then
 fi
 ensure_exists pip3
 
-pip3 install pyyaml # Used for `update-vscode-settings` util
+# Utilities used for `update-vscode-settings` util
+pip3 install pyyaml
+pip3 install json5
 
 # 'ssh-config' used by start-ec2-dev script
 if ! exists ssh-config ; then
