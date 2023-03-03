@@ -51,6 +51,7 @@ brew_install_login_app maccy # Gives clipboard history
 brew_install_login_app notunes
 brew_install visual-studio-code
 brew_install jq
+brew_install tree
 if brew_install fzf ; then
   $(brew --prefix)/opt/fzf/install # Installs key bindings and `**` command completion
 fi
