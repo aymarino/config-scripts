@@ -44,8 +44,5 @@
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.renderWhitespace": "all",
-    "workbench.editor.revealIfOpen": true,
-    "workbench.editorAssociations": {
-        "*.md": "vscode.markdown.preview.editor"
-    }
+    "workbench.editor.revealIfOpen": true
 }
