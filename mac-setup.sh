@@ -87,4 +87,3 @@ add_script_to_bin remote-workspace
 
 # Add ~/.scripts-bin to PATH
 add_to_rc scripts-bin.sh
-add_to_rc python-bin.sh
