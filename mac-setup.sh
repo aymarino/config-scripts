@@ -56,6 +56,9 @@ if brew_install fzf ; then
   $(brew --prefix)/opt/fzf/install # Installs key bindings and `**` command completion
 fi
 
+# Set fish to be the default shell
+brew_install fish
+
 if ! exists aws ; then
   brew install awscli # AWS CLI version 2
 fi
@@ -87,3 +90,4 @@ add_script_to_bin remote-workspace
 
 # Add ~/.scripts-bin to PATH
 add_to_rc scripts-bin.sh
+add_to_rc fish.sh
