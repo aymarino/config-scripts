@@ -44,6 +44,11 @@ if ! exists brew ; then
   ensure_exists brew
 fi
 
+# Rust
+ensure_exists cargo # Install rustup: https://www.rust-lang.org/tools/install
+cargo install ripgrep
+cargo install bat
+
 # Utilities
 brew_install_login_app mos # reverse scroll wheel direction
 brew_install_login_app rectangle # gives Windows-style max/half screen shortcuts
