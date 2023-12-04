@@ -32,4 +32,4 @@ add_script_to_bin_as auth-dev auth
 add_script_to_bin set-ra-path
 
 # Add ~/.scripts-bin to PATH
-add_to_rc scripts-bin.sh
+add_to_rc 01-scripts-bin.sh

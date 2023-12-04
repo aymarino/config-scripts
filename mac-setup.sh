@@ -87,7 +87,8 @@ fi
 # Add scripts to bin
 add_script_to_bin start-ec2-dev
 add_script_to_bin remote-workspace
+add_script_to_bin frg
 
 # Add ~/.scripts-bin to PATH
-add_to_rc scripts-bin.sh
-add_to_rc fish.sh
+add_to_rc 01-scripts-bin.sh
+add_to_rc 02-fish.sh
