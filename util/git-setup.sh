@@ -9,6 +9,11 @@ fi
 
 # Editor
 git config --global core.editor "vim"
+gitignore_file=$HOME/.gitignore-global
+if [ ! -f "$gitignore_file" ]; then
+  echo .DS_Store >> $gitignore_file
+fi
+git config --global core.excludesfile ~/.gitignore-global
 
 # Aliases
 git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:\
