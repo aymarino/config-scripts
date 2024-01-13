@@ -57,6 +57,8 @@ brew_install_login_app notunes
 brew_install visual-studio-code
 brew_install jq
 brew_install tree
+brew_install tmux
+brew_install alacritty
 if brew_install fzf ; then
   $(brew --prefix)/opt/fzf/install # Installs key bindings and `**` command completion
 fi
@@ -97,3 +99,7 @@ add_script_to_bin frg
 # Add ~/.scripts-bin to PATH
 add_to_rc 01-scripts-bin.sh
 add_to_rc 02-fish.sh
+
+# Copy conf files
+cp conf/.tmux.conf $HOME
+cp conf/.alacritty.toml $HOME
