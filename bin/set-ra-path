@@ -1,7 +1,0 @@
-#!/bin/bash
-
-vscode_settings_path=/home/aymarino/.vscode-server/data/Machine/settings.json
-brazil_path=$(brazil-path '[BrazilRust]testrun.runtimefarm')/lib
-
-echo "Setting LD_LIBRARY_PATH in $vscode_settings_path to $brazil_path"
-sed -i "s#\"LD_LIBRARY_PATH\": \".*\"#\"LD_LIBRARY_PATH\": \"$brazil_path\"#" $vscode_settings_path

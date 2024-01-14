@@ -1,4 +1,0 @@
-#!/bin/bash
-
-read -p 'Enter git config user.email for repo: ' email
-git config user.email "$email"

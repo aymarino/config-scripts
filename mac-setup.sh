@@ -99,7 +99,6 @@ fi
 
 # Add scripts to $HOME bin directory
 add_script_to_bin start-ec2-dev
-add_script_to_bin remote-workspace
 add_script_to_bin frg
 
 # Add ~/.scripts-bin to bash PATH
