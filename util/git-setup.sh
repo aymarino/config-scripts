@@ -8,7 +8,7 @@ if ! git config --get user.email > /dev/null ; then
 fi
 
 # Editor
-git config --global core.editor "vim"
+git config --global core.editor "nvim"
 gitignore_file=$HOME/.gitignore-global
 if [ ! -f "$gitignore_file" ]; then
   echo .DS_Store >> $gitignore_file
@@ -16,6 +16,7 @@ fi
 git config --global core.excludesfile ~/.gitignore-global
 
 # Aliases
+git config --global alias.s "status"
 git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:\
 '%C(bold blue)%h%C(reset) - \
 %C(bold green)(%aD)%C(reset) \
