@@ -59,12 +59,18 @@ brew_install jq
 brew_install tree
 brew_install tmux
 brew_install alacritty
-if brew_install fzf ; then
-  $(brew --prefix)/opt/fzf/install # Installs key bindings and `**` command completion
+brew_install neovim
+if brew_install fish ; then
+  echo "--- Set fish to default shell:"
+  echo "  add $(which fish) to /etc/shells"
+  echo "  chsh -s $(which fish)"
+  echo "and restart"
+  exit 1
 fi
-
-# Set fish to be the default shell
-brew_install fish
+if brew_install fzf ; then
+  echo "Installing fzf key bindings and ** shell command completions"
+  $(brew --prefix)/opt/fzf/install
+fi
 
 if ! exists aws ; then
   brew install awscli # AWS CLI version 2
@@ -91,15 +97,16 @@ if [[ $(defaults read com.apple.Dock appswitcher-all-displays) == "0" ]]; then
   killall Dock
 fi
 
-# Add scripts to bin
+# Add scripts to $HOME bin directory
 add_script_to_bin start-ec2-dev
 add_script_to_bin remote-workspace
 add_script_to_bin frg
 
-# Add ~/.scripts-bin to PATH
+# Add ~/.scripts-bin to bash PATH
 add_to_rc 01-scripts-bin.sh
-add_to_rc 02-fish.sh
 
 # Copy conf files
 cp conf/.tmux.conf $HOME
 cp conf/.alacritty.toml $HOME
+cp conf/config.fish $HOME/.config/fish
+cp conf/init.vim $HOME/.config/nvim
