@@ -49,13 +49,15 @@ ensure_exists cargo # Install rustup: https://www.rust-lang.org/tools/install
 cargo install ripgrep
 cargo install bat
 
-# Utilities
+## Utilities ##
+
 brew_install_login_app mos # reverse scroll wheel direction
 brew_install_login_app rectangle # gives Windows-style max/half screen shortcuts
 brew_install_login_app maccy # Gives clipboard history
 brew_install_login_app notunes
 brew_install visual-studio-code
 brew_install jq
+brew_install fd
 brew_install tree
 brew_install tmux
 brew_install alacritty
@@ -91,11 +93,28 @@ if ! exists ssh-config ; then
   pip3 install ssh-config
 fi
 
-# Set AppSwitcher to show up on all displays
+## MacOS defaults ##
+
+# TextEdit:
+#  - create untitled document at lauch
+#  - use plain text mode as default
+defaults write com.apple.TextEdit NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
+defaults write com.apple.TextEdit RichText -int 0
+
+# Dock:
+#  - enable autohide
+#  - set AppSwitcher to show up on all displays
 if [[ $(defaults read com.apple.Dock appswitcher-all-displays) == "0" ]]; then
+  defaults write com.apple.dock autohide -bool true
   defaults write com.apple.Dock appswitcher-all-displays -bool true
   killall Dock
 fi
+
+# Finder:
+#  - show file extensions
+defaults write -g AppleShowAllExtensions -bool true
+
+## Shell scripts ##
 
 # Add scripts to $HOME bin directory
 add_script_to_bin start-ec2-dev
@@ -103,6 +122,8 @@ add_script_to_bin frg
 
 # Add ~/.scripts-bin to bash PATH
 add_to_rc 01-scripts-bin.sh
+
+## Config files ##
 
 # Copy conf files
 cp conf/.tmux.conf $HOME
