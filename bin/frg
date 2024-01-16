@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-EDITOR=vim
+EDITOR=nvim
 result=`rg --ignore-case --color=always --line-number --no-heading "$@" |
   fzf --ansi \
       --color '' \
@@ -10,5 +10,5 @@ result=`rg --ignore-case --color=always --line-number --no-heading "$@" |
 file="${result%%:*}"
 linenumber=`echo "${result}" | cut -d: -f2`
 if [ ! -z "$file" ]; then
-  EDITOR +"${linenumber}" "$file"
+  $EDITOR +"${linenumber}" "$file"
 fi
