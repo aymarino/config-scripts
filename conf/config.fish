@@ -20,10 +20,8 @@ function fish_prompt
     set_color brblack
     echo -n "["(date "+%H:%M")"] "
 
-    if [ $PWD != $HOME ]
-        set_color yellow
-        echo -n (prompt_pwd)
-    end
+    set_color yellow
+    echo -n (prompt_pwd)
 
     set_color green
     printf '%s ' (__fish_git_prompt)
@@ -46,3 +44,5 @@ function fish_prompt
     echo -n '> '
     set_color normal
 end
+
+set -U fish_greeting # Remove greeting
