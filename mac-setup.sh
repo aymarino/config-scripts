@@ -125,6 +125,13 @@ add_to_rc 01-scripts-bin.sh
 
 ## Config files ##
 
+PLUG_SRC="${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
+if ! test -f ${PLUG_SRC}; then
+  echo "Installing Plug for neovim"
+  curl -fLo ${PLUG_SRC} --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 # Copy conf files
 cp conf/.tmux.conf $HOME
 cp conf/.alacritty.toml $HOME
