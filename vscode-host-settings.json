@@ -44,5 +44,6 @@
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.renderWhitespace": "all",
-    "workbench.editor.revealIfOpen": true
+    "workbench.editor.revealIfOpen": true,
+    "editor.lineNumbers": "relative"
 }
