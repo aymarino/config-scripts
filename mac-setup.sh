@@ -67,6 +67,19 @@ if brew_install fzf ; then
   $(brew --prefix)/opt/fzf/install
 fi
 
+fish <<'END_FISH'
+  if ! type -q fisher
+    echo "Install fisher using script from https://github.com/jorgebucaran/fisher"
+    exit 1
+  end
+
+  # Fish plugins
+  fisher install PatrickF1/fzf.fish
+END_FISH
+if [ $? -ne 0 ]; then
+  exit 1
+fi
+
 if ! exists aws ; then
   brew install awscli # AWS CLI version 2
 fi
