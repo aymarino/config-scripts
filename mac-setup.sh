@@ -4,8 +4,6 @@
 cd $(dirname "$0")
 
 source util/common.sh
-
-RC_FILES="$HOME/.bashrc $HOME/.zshrc" # Set .rc files for both ZSH and Bash shell
 source util/rc-setup.sh
 
 function brew_installed() {
@@ -44,11 +42,6 @@ if ! exists brew ; then
   ensure_exists brew
 fi
 
-# Rust
-ensure_exists cargo # Install rustup: https://www.rust-lang.org/tools/install
-cargo install ripgrep
-cargo install bat
-
 ## Utilities ##
 
 brew_install_login_app mos # reverse scroll wheel direction
@@ -78,7 +71,12 @@ if ! exists aws ; then
   brew install awscli # AWS CLI version 2
 fi
 
-# Install python & pip
+# Rust
+ensure_exists cargo # Install rustup: https://www.rust-lang.org/tools/install
+cargo install ripgrep
+cargo install bat
+
+# Python & pip
 if ! exists python3 ; then
   brew_install python3
 fi
@@ -114,14 +112,11 @@ fi
 #  - show file extensions
 defaults write -g AppleShowAllExtensions -bool true
 
-## Shell scripts ##
+## Custom shell scripts ##
 
 # Add scripts to $HOME bin directory
 add_script_to_bin start-ec2-dev
 add_script_to_bin frg
-
-# Add ~/.scripts-bin to bash PATH
-add_to_rc 01-scripts-bin.sh
 
 ## Config files ##
 
