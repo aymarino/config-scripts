@@ -41,6 +41,7 @@
             "commands": ["rust-analyzer.openDocs"]
         }
     ],
+    "vim.useSystemClipboard": true,
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.renderWhitespace": "all",
