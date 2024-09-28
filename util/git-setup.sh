@@ -19,7 +19,9 @@ git config --global core.excludesfile ~/.gitignore-global
 git config --global alias.s "status"
 git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:\
 '%C(bold blue)%h%C(reset) - \
-%C(bold green)(%aD)%C(reset) \
+%C(bold green)(%ad)%C(reset) \
 %s \
 %C(dim)- %an%C(reset)\
-%C(bold yellow)%d%C(reset)' --all"
+%C(bold yellow)%d%C(reset)' \
+--date=format:'%a, %d %b %Y %H:%M:%S %z' \
+--all"
