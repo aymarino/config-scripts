@@ -55,6 +55,7 @@ brew_install tree
 brew_install tmux
 brew_install alacritty
 brew_install neovim
+brew_install git-delta
 if brew_install fish ; then
   echo "--- Set fish to default shell:"
   echo "  add $(which fish) to /etc/shells"

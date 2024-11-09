@@ -15,6 +15,12 @@ if [ ! -f "$gitignore_file" ]; then
 fi
 git config --global core.excludesfile ~/.gitignore-global
 
+# Diff: [delta](https://github.com/dandavison/delta)
+git config --global core.pager "delta"
+git config --global interactive.diffFilter "delta --color-only"
+git config --global delta.navigate "true"
+git config --global merge.conflictstyle "zdiff3"
+
 # Aliases
 git config --global alias.s "status"
 git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:\
