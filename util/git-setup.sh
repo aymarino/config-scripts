@@ -9,11 +9,16 @@ fi
 
 # Editor
 git config --global core.editor "nvim"
+
+# gitignore .DS_Store
 gitignore_file=$HOME/.gitignore-global
 if [ ! -f "$gitignore_file" ]; then
   echo .DS_Store >> $gitignore_file
 fi
 git config --global core.excludesfile ~/.gitignore-global
+
+# Pull behavior default to rebase
+git config --global pull.rebase "true"
 
 # Diff: [delta](https://github.com/dandavison/delta)
 git config --global core.pager "delta"
