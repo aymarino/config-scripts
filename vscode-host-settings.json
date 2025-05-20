@@ -1,44 +1,94 @@
 {
     "vim.normalModeKeyBindings": [
         {
-            "before": ["g", "s"],
-            "commands": ["workbench.action.showAllSymbols"]
+            "before": [
+                "g",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
         },
         {
-            "before": ["g", "e"],
-            "commands": ["editor.action.marker.nextInFiles"]
+            "before": [
+                "g",
+                "e"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
         },
         {
-            "before": ["g", "R"],
-            "commands": ["editor.action.rename"]
+            "before": [
+                "g",
+                "R"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
         },
         {
-            "before": ["g", "t"],
-            "commands": ["editor.action.goToDefinition"]
+            "before": [
+                "g",
+                "t"
+            ],
+            "commands": [
+                "editor.action.goToDefinition"
+            ]
         },
         {
-            "before": ["g", "i"],
-            "commands": ["editor.action.goToImplementation"]
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
         },
         {
-            "before": ["g", "r"],
-            "commands": ["editor.action.goToReferences"]
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
         },
         {
-            "before": ["g", "b"],
-            "commands": ["workbench.action.navigateBack"]
+            "before": [
+                "g",
+                "b"
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ]
         },
         {
-            "before": ["g", "f"],
-            "commands": ["workbench.action.navigateForward"]
+            "before": [
+                "g",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.navigateForward"
+            ]
         },
         {
-            "before": ["T", "T"],
-            "commands": ["workbench.action.closeOtherEditors"]
+            "before": [
+                "T",
+                "T"
+            ],
+            "commands": [
+                "workbench.action.closeOtherEditors"
+            ]
         },
         {
-            "before": ["g", "D"],
-            "commands": ["rust-analyzer.openDocs"]
+            "before": [
+                "g",
+                "D"
+            ],
+            "commands": [
+                "rust-analyzer.openDocs"
+            ]
         }
     ],
     "vim.useSystemClipboard": true,
@@ -46,5 +96,16 @@
     "editor.guides.bracketPairs": true,
     "editor.renderWhitespace": "all",
     "workbench.editor.revealIfOpen": true,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "editor.minimap.renderCharacters": false,
+    "explorer.confirmDelete": false,
+    "git.blame.editorDecoration.enabled": true,
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "other": "off",
+            "comments": "off",
+            "strings": "off"
+        },
+        "editor.wordWrap": "on"
+    }
 }

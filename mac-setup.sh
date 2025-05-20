@@ -3,8 +3,17 @@
 # Ensure we're in the same dir as the script, since some relative paths are used.
 cd $(dirname "$0")
 
-source util/common.sh
-source util/rc-setup.sh
+function exists() {
+  echo "Checking if command '$1' exists..."
+  command -v "$1" &> /dev/null
+}
+
+function ensure_exists() {
+  if ! exists $1 ; then
+    echo "'$1' not found, but was expected to be; exiting"
+    exit 1
+  fi
+}
 
 function brew_installed() {
   echo "Checking if package '$1' is installed by brew..."
@@ -30,7 +39,7 @@ function brew_install_login_app() {
 }
 
 ensure_exists git
-sh ./util/git-setup.sh
+sh ./git-setup.sh
 
 # Install Homebrew & packages
 if ! exists brew ; then
@@ -72,10 +81,6 @@ fi
 # Rust
 ensure_exists cargo # Install rustup: https://www.rust-lang.org/tools/install
 
-# Utilities used for `update-vscode-settings` util
-pip3 install pyyaml
-pip3 install json5
-
 ## MacOS defaults ##
 
 # TextEdit:
@@ -100,7 +105,9 @@ defaults write -g AppleShowAllExtensions -bool true
 ## Custom shell scripts ##
 
 # Add scripts to $HOME bin directory
-add_script_to_bin frg
+BIN_DIR=$HOME/.scripts-bin
+mkdir $BIN_DIR
+cp bin/frg $BIN_DIR
 
 ## Config files ##
 

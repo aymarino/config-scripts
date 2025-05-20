@@ -7,7 +7,7 @@ import yaml # Use yaml to parse json files because VSCode format insists on usin
 parser = argparse.ArgumentParser(description=
     """
     Update vscode settings JSON with settings from the given JSON file.
-    Typical usage: ./update-vscode-settings.py vscode-host-settings.json ~/Library/Application\ Support/Code/User/settings.json
+    Typical usage: ./update-vscode-settings.py vscode-host-settings.json ~/Library/Application\\ Support/Code/User/settings.json
     """
 )
 parser.add_argument("source", help="File to pull desired settings from")
